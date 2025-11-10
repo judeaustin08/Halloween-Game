@@ -325,6 +325,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &271910693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 271910695}
+  - component: {fileID: 271910694}
+  m_Layer: 0
+  m_Name: CandySpawner
+  m_TagString: candySpawnpoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &271910694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271910693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d18ffca1e0844af83675025bf25552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  candyPrefab: {fileID: 5266511745410067544, guid: 28497ff2e1252de46be1d4139fb3b2c4, type: 3}
+  riskDistanceThreshold: 5
+  riskFactor: 0
+--- !u!4 &271910695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271910693}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 207.74, y: 0, z: 217.83}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &442587433
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5458587046738772527, guid: 28497ff2e1252de46be1d4139fb3b2c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5458587046738772527, guid: 28497ff2e1252de46be1d4139fb3b2c4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1098,7 +1145,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad30da8902ab6ae4b9e44d7b4c84f48a, type: 2}
   m_sharedMaterial: {fileID: -7960845519766511505, guid: ad30da8902ab6ae4b9e44d7b4c84f48a, type: 2}
@@ -1806,3 +1853,4 @@ SceneRoots:
   - {fileID: 1941167943}
   - {fileID: 601067999}
   - {fileID: 1169660877}
+  - {fileID: 271910695}
