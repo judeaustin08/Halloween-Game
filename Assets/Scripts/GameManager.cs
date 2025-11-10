@@ -38,18 +38,18 @@ public class GameManager : MonoBehaviour
         candySpawnLocations = GameObject.FindGameObjectsWithTag("candySpawnpoint");
         foreach (GameObject spawnpoint in candySpawnLocations)
             spawnpoint.GetComponent<ItemSpawnpoint>().Initialize(floorClerkSpawnpoints, cashierSpawnpoints);
-
-        UIManager.Instance.UpdateCandy(candy);
     }
 
     void Update()
     {
-        restockTimer += Time.deltaTime;
-        if (restockTimer > restockInterval)
-            restockTimer = 0;
-
+        UIManager.Instance.UpdateCandy(candy);
+        
         if (restockTimer == 0)
             foreach (GameObject spawn in candySpawnLocations)
                 spawn.GetComponent<ItemSpawnpoint>().Spawn();
+        
+        restockTimer += Time.deltaTime;
+        if (restockTimer > restockInterval)
+            restockTimer = 0;
     }
 }

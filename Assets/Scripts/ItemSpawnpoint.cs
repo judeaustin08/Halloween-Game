@@ -4,11 +4,10 @@ public class ItemSpawnpoint : MonoBehaviour
 {
     public GameObject candyPrefab;
     public float riskDistanceThreshold = 5f;
-    [HideInInspector] public int riskFactor;
+    [HideInInspector] public int riskFactor = 1;
 
     public void Initialize(Transform[] floorClerkSpawns, Transform[] cashierSpawns) {
         // Calculate risk factor
-
         // If this spot can be seen by a cashier, gain 5 risk factor
         foreach (Transform cashier in cashierSpawns)
             if (Physics.Raycast(transform.position, cashier.position - transform.position, Vector3.Distance(transform.position, cashier.position), GameManager.active.obstacleLayers))
@@ -22,7 +21,7 @@ public class ItemSpawnpoint : MonoBehaviour
 
     public void Spawn()
     {
-        ItemPickup candy = Instantiate(candyPrefab).GetComponent<ItemPickup>();
+        ItemPickup candy = Instantiate(candyPrefab, transform.position, Quaternion.identity).GetComponent<ItemPickup>();
         candy.quantity = riskFactor;
     }
 }
