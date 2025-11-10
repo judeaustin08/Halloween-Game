@@ -1326,7 +1326,7 @@ MonoBehaviour:
   mapGenerator: {fileID: 164389212}
   obstacleLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   restockInterval: 30
   candySpawnTag: candySpawnpoint
   floorClerkSpawnTag: fcSpawnpoint

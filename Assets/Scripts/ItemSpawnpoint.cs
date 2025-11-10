@@ -18,7 +18,7 @@ public class ItemSpawnpoint : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(transform.position, cashier.position - transform.position, out hit, Vector3.Distance(transform.position, cashier.position), GameManager.active.obstacleLayers))
                 riskFactor = 5;
-            Debug.Log(hit);
+            Debug.Log(Vector3.Distance(transform.position, cashier.position) + " " + hit.distance);
         }
 
         // Add 1 to risk factor for every nearby floor clerk spawn
