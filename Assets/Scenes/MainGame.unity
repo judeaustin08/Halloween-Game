@@ -875,7 +875,7 @@ MonoBehaviour:
   sprintFactor: 1.5
   staminaBar: {fileID: 1769852996}
   cam: {fileID: 1408392716}
-  cameraSensitivity: 300
+  cameraSensitivity: 2
   maxHealth: 3
 --- !u!54 &1259568086
 Rigidbody:
@@ -1236,7 +1236,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapGenerator: {fileID: 164389212}
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  restockInterval: 30
   candy: 0
+  restockTimer: 0
 --- !u!114 &1488623834
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
-    public LayerMask obstacleLayers;
+    public int quantity = 1;
 
     private bool playerInRange = false;
-    private GameManager GameManager;
+    private GameManager gameManager;
 
     private InputActions input;
 
-    private void Start()
+    private void Awake()
     {
         input = new();
-        GameManager = FindObjectOfType<GameManager>();
+
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void OnEnable()
@@ -61,15 +62,15 @@ public class ItemPickup : MonoBehaviour
             NPC npc;
             col.TryGetComponent<NPC>(out npc);
 
-            if (npc != null && !Physics.Raycast(transform.position, col.transform.position - transform.position, Vector3.Distance(transform.position, col.transform.position), obstacleLayers))
+            if (npc != null && !Physics.Raycast(transform.position, col.transform.position - transform.position, Vector3.Distance(transform.position, col.transform.position), GameManager.active.obstacleLayers))
             {
                 npc._SawCandyStolen = true;
             }
         }
 
         // Destroy or disable the item
-        GameManager.candy++;
-        UIManager.Instance.UpdateCandy(GameManager.candy);
+        gameManager.candy += quantity;
+        UIManager.Instance.UpdateCandy(gameManager.candy);
         Destroy(gameObject);
     }
 }

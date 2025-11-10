@@ -15,6 +15,21 @@ public class Shoot : MonoBehaviour
     private BoxCollider shootTrigger;
     private float cooldown;
 
+    private InputActions input;
+
+    private void Awake()
+    {
+        input = new();
+    }
+    private void OnEnable()
+    {
+        input.Enable();
+    }
+    private void OnDisable()
+    {
+        input.Disable();
+    }
+
     void Start()
     {
         shootTrigger = GetComponent<BoxCollider>();
@@ -25,7 +40,7 @@ public class Shoot : MonoBehaviour
     {
         if (cooldown > 0f)
             cooldown -= Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && gameManager.candy > 0 && cooldown <= 0f) 
+        if (input.Player.Shoot.WasPressedThisFrame() && gameManager.candy > 0 && cooldown <= 0f) 
         {
             ThrowCandy();
             cooldown = fireRate;
@@ -45,7 +60,7 @@ public class Shoot : MonoBehaviour
         NPC target = other.GetComponent<NPC>();
         if (target != null)
         {
-                enemyManager.RemoveEnemy(target);
+            enemyManager.RemoveEnemy(target);
         }
 
     }

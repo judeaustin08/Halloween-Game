@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
         staminaBar.value = meter;
 
         Move();
+        Look();
         cameraAnimator.SetBool("isWalking", isMoving);
     }
 
@@ -109,9 +110,11 @@ public class PlayerController : MonoBehaviour
             transform.Translate(movementVector);
             meter += 1;
         }
+    }
 
-        // Rotational movement
-        lookAngles += input.Player.MouseDelta.ReadValue<Vector2>() * cameraSensitivity * Time.deltaTime;
+    private void Look()
+    {
+        lookAngles += input.Player.MouseDelta.ReadValue<Vector2>() * cameraSensitivity;
         transform.rotation = Quaternion.Euler(0, lookAngles.x, 0);
     }
 
