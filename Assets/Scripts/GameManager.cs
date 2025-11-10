@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     [Header("Game Variables")]
     public LayerMask obstacleLayers;
     public float restockInterval = 30f;
+    public string candySpawnTag = "candySpawnpoint";
+    public string floorClerkSpawnTag = "fcSpawnpoint";
+    public string cashierSpawnTag = "caSpawnpoint";
 
     [Header("Game Data")]
 
@@ -35,7 +38,23 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         mapGenerator.GenerateMap();
-        candySpawnLocations = GameObject.FindGameObjectsWithTag("candySpawnpoint");
+
+        GameObject[] temp;
+
+        // Floor clerk spawn
+        int i = 0;
+        floorClerkSpawnpoints = new Transform[(temp = GameObject.FindGameObjectsWithTag(floorClerkSpawnTag)).Length];
+        foreach (GameObject spawn in temp)
+            floorClerkSpawnpoints[i++] = spawn.transform;
+
+        // Cashier spawn
+        i = 0;
+        cashierSpawnpoints = new Transform[(temp = GameObject.FindGameObjectsWithTag(cashierSpawnTag)).Length];
+        foreach (GameObject spawn in temp)
+            cashierSpawnpoints[i++] = spawn.transform;
+
+        // Candy spawn
+            candySpawnLocations = GameObject.FindGameObjectsWithTag(candySpawnTag);
         foreach (GameObject spawnpoint in candySpawnLocations)
             spawnpoint.GetComponent<ItemSpawnpoint>().Initialize(floorClerkSpawnpoints, cashierSpawnpoints);
     }

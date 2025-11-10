@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Hostile
   - candySpawnpoint
+  - fcSpawnpoint
+  - caSpawnpoint
   layers:
   - Default
   - TransparentFX

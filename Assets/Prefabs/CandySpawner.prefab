@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   candyPrefab: {fileID: 5266511745410067544, guid: 28497ff2e1252de46be1d4139fb3b2c4, type: 3}
   riskDistanceThreshold: 5
-  riskFactor: 0
+  riskFactor: 1

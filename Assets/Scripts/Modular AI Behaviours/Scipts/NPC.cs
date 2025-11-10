@@ -192,12 +192,12 @@ public class NPC : MonoBehaviour
         {
             Vector3 dir = (path.vectorPath[currentWaypoint] - transform.position).normalized;
             Vector3 movement = (speed + active.speedModifier) * active.multiplicativeSpeedMultiplier * Time.deltaTime * dir;
-            Debug.Log(string.Format(
+            /*Debug.Log(string.Format(
                 "Waypoint {0} = {1}\nMovement vector = {2}",
                 currentWaypoint,
                 path.vectorPath[currentWaypoint],
                 movement
-            ));
+            ));*/
             transform.Translate(movement);
 
             // Complete all waypoints which are close enough

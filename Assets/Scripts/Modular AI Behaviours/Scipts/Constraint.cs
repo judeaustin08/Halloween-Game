@@ -69,7 +69,6 @@ public class Constraint : ScriptableObject
                     parent.transform.position,
                     target.transform.position
                 );
-                Debug.Log("Distance is " + distance);
                 return Compare(distance, compareValue);
             case Type.FLOAT:
                 return Compare((float)property.GetValue(parentNPC), compareValue);
