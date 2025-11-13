@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public string candySpawnTag = "candySpawnpoint";
     public string floorClerkSpawnTag = "fcSpawnpoint";
     public string cashierSpawnTag = "caSpawnpoint";
+    public AudioSource universalSoundEffect;
+    public AudioSource universalMusic;
 
     [Header("Game Data")]
 

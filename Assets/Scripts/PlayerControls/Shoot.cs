@@ -10,6 +10,7 @@ public class Shoot : MonoBehaviour
     [SerializeField] private float randomizationFactor = 45;
     [SerializeField] private int count = 5;
     [SerializeField] private float fireRate = 1.5f;
+    [SerializeField] private AudioClip throwSound;
 
     private float cooldown;
 
@@ -54,6 +55,8 @@ public class Shoot : MonoBehaviour
             ) * transformRoot.rotation * baseDirection;
             rb.AddForce(dir.normalized * forceMultiplier, ForceMode.Impulse);
         }
+
+        GameManager.active.universalSoundEffect.PlayOneShot(throwSound);
 
         UIManager.Instance.UpdateCandy(GameManager.active.candy);
     }

@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
     private int health;
     public int maxHealth = 3;
+    public AudioClip hitSound;
 
     private float damping = 5f;
 
@@ -126,5 +127,7 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
+        GameManager.active.universalSoundEffect.Play();
     }
 }

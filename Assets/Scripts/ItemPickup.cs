@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     public int quantity = 1;
+    public AudioClip pickupSound;
 
     private bool playerInRange = false;
     private GameManager gameManager;
@@ -54,12 +55,10 @@ public class ItemPickup : MonoBehaviour
     private void PickupItem()
     {
         // Candy stolen logic
-        Debug.Log("Candy stolen!");
-
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 20f); // 20 units radius
         foreach (var col in hitColliders)
         {
-            if (!col.TryGetComponent(out NPC npc)) return;
+            if (!col.TryGetComponent(out NPC npc)) continue;
 
             if (!Physics.Raycast(transform.position, col.transform.position - transform.position, Vector3.Distance(transform.position, col.transform.position), GameManager.active.obstacleLayers))
                 npc._SawCandyStolen = true;
@@ -67,7 +66,11 @@ public class ItemPickup : MonoBehaviour
 
         // Destroy or disable the item
         gameManager.candy += quantity;
+        GameManager.active.universalSoundEffect.PlayOneShot(pickupSound);
         UIManager.Instance.UpdateCandy(gameManager.candy);
+
+        Debug.Log("Candy stolen!");
+
         Destroy(gameObject);
     }
 }
