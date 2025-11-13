@@ -21,8 +21,13 @@ public class CappedRandomSpawner : EntitySpawner
             GameObject go = Object.Instantiate(prefab, pos, Quaternion.identity);
             int id = go.GetInstanceID();
             go.name = id.ToString();
+            if (go.TryGetComponent(out NPC npc))
+            {
+                npc.parent = this;
+                npc.id = id;
+            }
             if (!spawnedEntities.ContainsKey(id))
-                spawnedEntities.Add(id, go);
+                    spawnedEntities.Add(id, go);
         }
     }
 }

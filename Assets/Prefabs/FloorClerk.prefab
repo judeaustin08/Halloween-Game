@@ -94,8 +94,8 @@ GameObject:
   - component: {fileID: 4345718593345675167}
   - component: {fileID: 6264490423718044779}
   - component: {fileID: 4667747518212396291}
-  - component: {fileID: 4432252774701236749}
   - component: {fileID: 2822948018494702447}
+  - component: {fileID: 2354559485227465300}
   m_Layer: 0
   m_Name: FloorClerk
   m_TagString: Hostile
@@ -169,9 +169,14 @@ MonoBehaviour:
   - trigger: {fileID: 11400000, guid: f6ddd9f7f04c3a34a80e169aadceb5aa, type: 2}
     constraints:
     - {fileID: 11400000, guid: f4bcda99bebb141499ef26da63d45763, type: 2}
+    - {fileID: 11400000, guid: 90607a51da03e4349870c5b51dc45632, type: 2}
+    - {fileID: 11400000, guid: 87c6332f2c9be4eed9f80b817f02b898, type: 2}
   - trigger: {fileID: 11400000, guid: bfb2abd3a2c32764088edbf15bc2c936, type: 2}
     constraints:
     - {fileID: 11400000, guid: 119a4c2c9a70c0944868286e569ede99, type: 2}
+  - trigger: {fileID: 11400000, guid: bfb2abd3a2c32764088edbf15bc2c936, type: 2}
+    constraints:
+    - {fileID: 11400000, guid: 87c6332f2c9be4eed9f80b817f02b898, type: 2}
   movementBehaviours:
   - behaviour: {fileID: 11400000, guid: 0a2f1c1b2fece46ecb1e6853168217cf, type: 2}
     constraints:
@@ -192,29 +197,6 @@ MonoBehaviour:
     m_Bits: 128
   nextWaypointDistance: 1.5
   drawGizmos: 0
---- !u!136 &4432252774701236749
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2116179474185437008}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &2822948018494702447
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -237,8 +219,29 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &2354559485227465300
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116179474185437008}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8, y: 2, z: 0.8}
+  m_Center: {x: 0, y: 1, z: 0}

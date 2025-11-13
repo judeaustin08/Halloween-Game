@@ -3,6 +3,7 @@ using UnityEngine;
 public class Shoot : MonoBehaviour
 {
     [SerializeField] private GameObject candyPrefab;
+    [SerializeField] private Transform transformRoot;
     [SerializeField] private float forceMultiplier = 3;
     [SerializeField] private Vector3 baseDirection = new Vector3(0, 0.5f, 1);
     [Tooltip("Maximum rotational variance in degrees of the direction")]
@@ -31,7 +32,7 @@ public class Shoot : MonoBehaviour
     {
         if (cooldown > 0f)
             cooldown -= Time.deltaTime;
-        if (input.Player.Shoot.WasPressedThisFrame()) 
+        if (input.Player.Shoot.WasPressedThisFrame())
         {
             ThrowCandy();
             cooldown = fireRate;
@@ -50,7 +51,7 @@ public class Shoot : MonoBehaviour
                 Random.Range(-randomizationFactor, randomizationFactor),
                 Random.Range(-randomizationFactor, randomizationFactor),
                 0
-            ) * transform.rotation * baseDirection;
+            ) * transformRoot.rotation * baseDirection;
             rb.AddForce(dir.normalized * forceMultiplier, ForceMode.Impulse);
         }
 

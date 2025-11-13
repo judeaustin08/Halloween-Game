@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 442587434}
   - component: {fileID: 442587437}
   - component: {fileID: 442587436}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -761,7 +761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1232491770}
   - component: {fileID: 1232491771}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: CandyThrower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -796,9 +796,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   candyPrefab: {fileID: 2985842136572694376, guid: dd2fd68a95e8a4b72b086e06f0609db4, type: 3}
-  forceMultiplier: 5
-  baseDirection: {x: 0, y: 0.1, z: 1}
-  randomizationFactor: 45
+  transformRoot: {fileID: 1259568083}
+  forceMultiplier: 40
+  baseDirection: {x: 0, y: 0.2, z: 1}
+  randomizationFactor: 10
   count: 5
   fireRate: 1.5
 --- !u!1 &1259568079
@@ -813,7 +814,7 @@ GameObject:
   - component: {fileID: 1259568085}
   - component: {fileID: 1259568086}
   - component: {fileID: 1259568087}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerObject
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -949,7 +950,7 @@ GameObject:
   - component: {fileID: 1408392718}
   - component: {fileID: 1408392717}
   - component: {fileID: 1408392720}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1247,6 +1248,9 @@ MonoBehaviour:
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 128
+  projectileLayer:
+    serializedVersion: 2
+    m_Bits: 64
   restockInterval: 30
   candySpawnTag: candySpawnpoint
   floorClerkSpawnTag: fcSpawnpoint
@@ -1261,9 +1265,9 @@ MonoBehaviour:
     count: 1
   floorClerkSpawner:
     locations: []
-    continuous: 0
+    continuous: 1
     prefab: {fileID: 2116179474185437008, guid: f9eebadef97c2144898ef9aa5cfb3f08, type: 3}
-    chance: 0.1
+    chance: 0.01
     max: 5
 --- !u!1 &1490056527
 GameObject:

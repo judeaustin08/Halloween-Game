@@ -20,7 +20,11 @@ public class BatchSpawner : EntitySpawner
             GameObject go = Object.Instantiate(prefab, pos, Quaternion.identity);
             int id = go.GetInstanceID();
             go.name = id.ToString();
-            go.GetComponent<NPC>().parent = this;
+            if (go.TryGetComponent(out NPC npc))
+            {
+                npc.parent = this;
+                npc.id = id;
+            }
             spawnedEntities.Add(id, go);
         }
 

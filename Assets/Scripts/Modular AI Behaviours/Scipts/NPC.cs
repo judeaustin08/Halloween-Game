@@ -71,6 +71,7 @@ public class NPC : MonoBehaviour
     private Seeker seeker;
     private Path path;
     [HideInInspector] public EntitySpawner parent;
+    [HideInInspector] public int id;
 
     private int currentWaypoint = 0;
     [SerializeField] private float nextWaypointDistance = 3;
@@ -168,14 +169,14 @@ public class NPC : MonoBehaviour
         // Return early if no behaviour is selected
         if (activeBehaviour == -1)
         {
-            Debug.Log("No AI behaviour - selecting a behaviour");
+            //Debug.Log("No AI behaviour - selecting a behaviour");
             return;
         }
 
         // Generate new path if AI Behaviour changed
         if (activeBehaviour != checkActiveBehaviour)
         {
-            Debug.Log("New AI behaviour - generating new path");
+            //Debug.Log("New AI behaviour - generating new path");
             checkActiveBehaviour = activeBehaviour;
             StartCoroutine(StartPath());
         }
@@ -212,7 +213,7 @@ public class NPC : MonoBehaviour
                         currentWaypoint++;
                     else
                     {
-                        Debug.Log("Finished path - generating new path");
+                        //Debug.Log("Finished path - generating new path");
                         StartCoroutine(StartPath());
                         break;
                     }
@@ -273,27 +274,33 @@ public class NPC : MonoBehaviour
 
     private IEnumerator OnSleep()
     {
-        // Disable NPC movement
-        enabled = false;
+        Debug.Log("Sleeping");
+        // Disable movement
+        speed = 0;
 
         // Despawn NPC
         Despawn();
 
         yield break;
     }
+    public void Sleep()
+    {
+        Debug.Log("Sleeping");
+        StartCoroutine(OnSleep());
+    }
 
     private void Despawn()
     {
         if (parent != null)
-            parent.Despawn(GetInstanceID());
+            parent.Despawn(id);
         else
             Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == GameManager.active.projectileLayer)
-            OnSleep();
+        if (collision.gameObject.tag.Equals(GameManager.active.projectileTag))
+            Sleep();
     }
 }
 

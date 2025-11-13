@@ -9,6 +9,7 @@ public abstract class EntitySpawner
     public abstract void TrySpawn();
     public void Despawn(int id)
     {
+        Debug.Log(string.Format("Removing NPC {0}", id));
         spawnedEntities.Remove(id);
         Object.Destroy(GameObject.Find(id.ToString()));
     }

@@ -8,6 +8,7 @@ TagManager:
   - candySpawnpoint
   - fcSpawnpoint
   - caSpawnpoint
+  - Projectile
   layers:
   - Default
   - TransparentFX

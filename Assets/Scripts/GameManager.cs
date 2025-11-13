@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -15,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Variables")]
     public LayerMask obstacleLayers;
-    public LayerMask projectileLayer;
+    public string projectileTag = "Projectile";
     public float restockInterval = 30f;
     public string candySpawnTag = "candySpawnpoint";
     public string floorClerkSpawnTag = "fcSpawnpoint";
