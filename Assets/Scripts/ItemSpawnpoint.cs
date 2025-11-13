@@ -8,23 +8,18 @@ public class ItemSpawnpoint : MonoBehaviour
 
     Ray ray;
 
-    public void Initialize(Transform[] floorClerkSpawns, Transform[] cashierSpawns)
+    public void Initialize(Vector3[] floorClerkSpawns, Vector3[] cashierSpawns)
     {
         // Calculate risk factor
         // If this spot can be seen by a cashier, gain 5 risk factor
-        foreach (Transform cashier in cashierSpawns)
-        {
-            ray = new Ray(transform.position, cashier.position - transform.position);
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, cashier.position - transform.position, out hit, Vector3.Distance(transform.position, cashier.position), GameManager.active.obstacleLayers))
+        foreach (Vector3 cashier in cashierSpawns)
+            if (!Physics.Raycast(transform.position, cashier - transform.position, Vector3.Distance(transform.position, cashier), GameManager.active.obstacleLayers))
                 riskFactor = 5;
-            Debug.Log(Vector3.Distance(transform.position, cashier.position) + " " + hit.distance);
-        }
 
         // Add 1 to risk factor for every nearby floor clerk spawn
-            foreach (Transform floorClerk in floorClerkSpawns)
-                if (Vector3.Distance(floorClerk.position, transform.position) < riskDistanceThreshold)
-                    riskFactor++;
+        foreach (Vector3 floorClerk in floorClerkSpawns)
+            if (Vector3.Distance(floorClerk, transform.position) < riskDistanceThreshold)
+                riskFactor++;
     }
 
     public void Spawn()

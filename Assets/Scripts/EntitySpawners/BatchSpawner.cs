@@ -1,9 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 public enum SpawnMode { FIXED, PER }
 
+[System.Serializable]
 public class BatchSpawner : EntitySpawner
 {
     [SerializeField] private SpawnMode mode = SpawnMode.FIXED;
@@ -14,14 +14,13 @@ public class BatchSpawner : EntitySpawner
     {
         if (prefab == null) return;
         if (locations == null || locations.Length == 0) return;
-        if (spawnedEntities == null) return;
 
         if (mode == SpawnMode.FIXED)
         {
             for (int i = 0; i < count; i++)
             {
                 Vector3 pos = locations[Random.Range(0, locations.Length)];
-                GameObject go = Instantiate(prefab, pos, Quaternion.identity);
+                GameObject go = Object.Instantiate(prefab, pos, Quaternion.identity);
                 int id = go.GetInstanceID();
                 if (!spawnedEntities.ContainsKey(id))
                     spawnedEntities.Add(id, go);
@@ -34,7 +33,7 @@ public class BatchSpawner : EntitySpawner
                 Vector3 loc = locations[j];
                 for (int i = 0; i < count; i++)
                 {
-                    GameObject go = Instantiate(prefab, loc, Quaternion.identity);
+                    GameObject go = Object.Instantiate(prefab, loc, Quaternion.identity);
                     int id = go.GetInstanceID();
                     if (!spawnedEntities.ContainsKey(id))
                         spawnedEntities.Add(id, go);

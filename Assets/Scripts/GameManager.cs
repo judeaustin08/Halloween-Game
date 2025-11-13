@@ -24,9 +24,12 @@ public class GameManager : MonoBehaviour
 
     public int candy = 0;
     private GameObject[] candySpawnLocations;
-    private Transform[] cashierSpawnpoints;
-    private Transform[] floorClerkSpawnpoints;
+    private Vector3[] cashierSpawnpoints;
+    private Vector3[] floorClerkSpawnpoints;
     public float restockTimer = 0;
+
+    public BatchSpawner cashierSpawner;
+    public CappedRandomSpawner floorClerkSpawner;
 
     void Awake()
     {
@@ -43,20 +46,25 @@ public class GameManager : MonoBehaviour
 
         // Floor clerk spawn
         int i = 0;
-        floorClerkSpawnpoints = new Transform[(temp = GameObject.FindGameObjectsWithTag(floorClerkSpawnTag)).Length];
+        floorClerkSpawnpoints = new Vector3[(temp = GameObject.FindGameObjectsWithTag(floorClerkSpawnTag)).Length];
         foreach (GameObject spawn in temp)
-            floorClerkSpawnpoints[i++] = spawn.transform;
+            floorClerkSpawnpoints[i++] = spawn.transform.position;
+        floorClerkSpawner.locations = floorClerkSpawnpoints;
 
         // Cashier spawn
         i = 0;
-        cashierSpawnpoints = new Transform[(temp = GameObject.FindGameObjectsWithTag(cashierSpawnTag)).Length];
+        cashierSpawnpoints = new Vector3[(temp = GameObject.FindGameObjectsWithTag(cashierSpawnTag)).Length];
         foreach (GameObject spawn in temp)
-            cashierSpawnpoints[i++] = spawn.transform;
+            cashierSpawnpoints[i++] = spawn.transform.position;
+        cashierSpawner.locations = cashierSpawnpoints;
 
         // Candy spawn
-            candySpawnLocations = GameObject.FindGameObjectsWithTag(candySpawnTag);
+        candySpawnLocations = GameObject.FindGameObjectsWithTag(candySpawnTag);
         foreach (GameObject spawnpoint in candySpawnLocations)
             spawnpoint.GetComponent<ItemSpawnpoint>().Initialize(floorClerkSpawnpoints, cashierSpawnpoints);
+
+        // Spawn cashiers
+        cashierSpawner.TrySpawn();
     }
 
     void Update()
@@ -64,9 +72,12 @@ public class GameManager : MonoBehaviour
         if (restockTimer == 0)
             foreach (GameObject spawn in candySpawnLocations)
                 spawn.GetComponent<ItemSpawnpoint>().Spawn();
-        
+
         restockTimer += Time.deltaTime;
         if (restockTimer > restockInterval)
             restockTimer = 0;
+
+        if (floorClerkSpawner.continuous)
+            floorClerkSpawner.TrySpawn();
     }
 }
