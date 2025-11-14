@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f1b349a809db4e85944ef5e97f0d005, type: 3}
-  m_Name: BOOL_CHASING
+  m_Script: {fileID: 11500000, guid: 5bfaecd371d334cd7b2e7e9795a674e0, type: 3}
+  m_Name: cashier
   m_EditorClassIdentifier: 
-  type: 2
-  parent: {fileID: 0}
-  comparisonType: 0
-  boolEvaluationType: 0
-  propertyName: _Chasing
-  compareValue: 0
+  minimumInterval: 0
+  randomInterval: 0
+  continuous: 0
+  speedModifier: 0
+  multiplicativeSpeedMultiplier: 1
+  patrolRadius: 10
+  drawPatrolRadius: 0

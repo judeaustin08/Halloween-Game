@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f1b349a809db4e85944ef5e97f0d005, type: 3}
-  m_Name: BOOL_CHASING
+  m_Script: {fileID: 11500000, guid: b59d7e620e1fc49f986abebac129508d, type: 3}
+  m_Name: SENDCOMMAND
   m_EditorClassIdentifier: 
   type: 2
-  parent: {fileID: 0}
-  comparisonType: 0
-  boolEvaluationType: 0
-  propertyName: _Chasing
-  compareValue: 0
+  propertyName: SendRandomCommand
+  setBooleanValue: 0
+  setFloatValue: 0

@@ -1,3 +1,4 @@
+using System.Reflection;
 using UnityEngine;
 
 [CreateAssetMenu(fileName="Trigger", menuName="AI Behaviours/New Trigger")]
@@ -8,7 +9,8 @@ public class Trigger : ScriptableObject
     public enum Type
     {
         BOOLEAN,
-        FLOAT
+        FLOAT,
+        METHOD
     }
     public Type type;
     public string propertyName;
@@ -31,6 +33,10 @@ public class Trigger : ScriptableObject
                 break;
             case Type.FLOAT:
                 typeof(NPC).GetProperty(propertyName).SetValue(parent, setFloatValue);
+                break;
+            case Type.METHOD:
+                Debug.Log("Triggering");
+                typeof(NPC).InvokeMember(propertyName, BindingFlags.Public, null, parent, null);
                 break;
         }
     }

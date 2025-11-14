@@ -55,13 +55,16 @@ public class ItemPickup : MonoBehaviour
     private void PickupItem()
     {
         // Candy stolen logic
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 20f); // 20 units radius
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 50f); // 20 units radius
         foreach (var col in hitColliders)
         {
             if (!col.TryGetComponent(out NPC npc)) continue;
 
             if (!Physics.Raycast(transform.position, col.transform.position - transform.position, Vector3.Distance(transform.position, col.transform.position), GameManager.active.obstacleLayers))
-                npc._SawCandyStolen = true;
+            {
+                Debug.Log("NPC saw candy stolen");
+                typeof(NPC).GetProperty("_SawCandyStolen").SetValue(npc, true);
+            }
         }
 
         // Destroy or disable the item

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     public string cashierSpawnTag = "caSpawnpoint";
     public AudioSource universalSoundEffect;
     public AudioSource universalMusic;
+    public GameObject endUI;
 
     [Header("Game Data")]
 
@@ -37,6 +39,8 @@ public class GameManager : MonoBehaviour
         active = this;
 
         restockTimer = 0;
+
+        endUI.SetActive(false);
     }
 
     void Start()
@@ -80,7 +84,7 @@ public class GameManager : MonoBehaviour
                 npc.GetComponent<NPC>()._FollowingCommand = false;
             }
             foreach (GameObject npc in cashierSpawner.GetAllSpawnedEntities())
-                    npc.GetComponent<NPC>()._SawCandyStolen = false;
+                npc.GetComponent<NPC>()._SawCandyStolen = false;
         }
 
         restockTimer += Time.deltaTime;
@@ -92,5 +96,11 @@ public class GameManager : MonoBehaviour
     {
         if (floorClerkSpawner.continuous)
             floorClerkSpawner.TrySpawn();
+    }
+
+    public void EndGame()
+    {
+        Time.timeScale = 0;
+        endUI.SetActive(true);
     }
 }

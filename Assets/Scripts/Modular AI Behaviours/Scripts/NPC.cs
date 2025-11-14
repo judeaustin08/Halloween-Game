@@ -110,20 +110,20 @@ public class NPC : MonoBehaviour
     */
     private void Start()
     {
+        foreach (ConstrainedTrigger t in triggers)
+        {
+            t.trigger.Initialize(this);
+
+            foreach (Constraint c in t.constraints)
+                c.Initialize(gameObject);
+        }
+
         NPCManager = FindObjectOfType<NPCManager>();
         foreach (Behaviour b in movementBehaviours)
         {
             b.behaviour.Initialize(gameObject);
 
             foreach (Constraint c in b.constraints)
-                c.Initialize(gameObject);
-        }
-
-        foreach (ConstrainedTrigger t in triggers)
-        {
-            t.trigger.Initialize(this);
-
-            foreach (Constraint c in t.constraints)
                 c.Initialize(gameObject);
         }
     }
@@ -152,7 +152,7 @@ public class NPC : MonoBehaviour
         targetAtEyeHeight = transform.position + Vector3.up * height;
         seeingTarget = !Physics.Raycast(
             eyePos,
-            target.position - eyePos,
+            targetAtEyeHeight,
             seeingDistance,
             obstacleLayer
         );
@@ -319,6 +319,7 @@ public class NPC : MonoBehaviour
 
     public void SendRandomCommand()
     {
+        Debug.Log("Sending Command");
         GameObject[] temp;
         (temp = GameManager.active.floorClerkSpawner.GetAllSpawnedEntities())[Random.Range(0, temp.Length - 1)].GetComponent<NPC>().ReceiveCommand();
     }
