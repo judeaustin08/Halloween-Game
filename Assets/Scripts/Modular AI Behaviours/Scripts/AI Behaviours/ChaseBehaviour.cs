@@ -9,16 +9,16 @@ public class ChaseBehaviour : AIBehaviour
     private Vector3 lastKnownPosition;
     private Transform target;
 
-    public override void Initialize(GameObject parent)
+    public new void Initialize(GameObject parent)
     {
-        this.parent = parent;
+        base.Initialize(parent);
         target = (Transform)typeof(NPC).GetProperty(targetPropertyName).GetValue(parent.GetComponent<NPC>());
     }
 
     /*
     Returns the last known position of the target. The last known position is updated if:
      - The NPC can see the target
-     - The target is within a very close distance of the target (NPC can hear)
+     - The NPC is following a command
     */
     public override Vector3 SelectTarget()
     {

@@ -178,10 +178,9 @@ MonoBehaviour:
     constraints:
     - {fileID: 11400000, guid: 87c6332f2c9be4eed9f80b817f02b898, type: 2}
   movementBehaviours:
-  - behaviour: {fileID: 11400000, guid: 0a2f1c1b2fece46ecb1e6853168217cf, type: 2}
+  - behaviour: {fileID: 11400000, guid: 589de114041fb48ffba4dc0e4b7af164, type: 2}
     constraints:
-    - {fileID: 11400000, guid: 90607a51da03e4349870c5b51dc45632, type: 2}
-    - {fileID: 11400000, guid: fe784b03b913d4d1dbb76fc2bf12cb93, type: 2}
+    - {fileID: 11400000, guid: f3ade4d13d3fa40fcb48a265d9b0cfe8, type: 2}
   - behaviour: {fileID: 11400000, guid: 4929d5c9226b549b5a292c49bc529ffa, type: 2}
     constraints:
     - {fileID: 11400000, guid: 90607a51da03e4349870c5b51dc45632, type: 2}

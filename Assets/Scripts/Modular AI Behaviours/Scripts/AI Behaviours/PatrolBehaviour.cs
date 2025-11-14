@@ -10,9 +10,9 @@ public class PatrolBehaviour : AIBehaviour
     [SerializeField] private bool drawPatrolRadius = false;
 
     // Call base constructor to set constraints
-    public override void Initialize(GameObject parent)
+    public new void Initialize(GameObject parent)
     {
-        this.parent = parent;
+        base.Initialize(parent);
         initialPosition = parent.transform.position;
     }
 

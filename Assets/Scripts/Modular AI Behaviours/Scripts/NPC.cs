@@ -69,6 +69,11 @@ public class NPC : MonoBehaviour
     }
 
     private bool followingCommand = false;
+    public bool _FollowingCommand
+    {
+        get { return followingCommand; }
+        set { followingCommand = value; }
+    }
 
     private Seeker seeker;
     private Path path;
@@ -308,7 +313,14 @@ public class NPC : MonoBehaviour
 
     public void ReceiveCommand()
     {
-        
+        followingCommand = true;
+        sawCandyStolen = true;
+    }
+
+    public void SendRandomCommand()
+    {
+        GameObject[] temp;
+        (temp = GameManager.active.floorClerkSpawner.GetAllSpawnedEntities())[Random.Range(0, temp.Length - 1)].GetComponent<NPC>().ReceiveCommand();
     }
 }
 

@@ -7,9 +7,9 @@ public class FleeBehaviour : AIBehaviour
     private Transform target;
     [SerializeField] private float pathDistance;
 
-    public override void Initialize(GameObject parent)
+    public new void Initialize(GameObject parent)
     {
-        this.parent = parent;
+        base.Initialize(parent);
         target = (Transform)typeof(NPC).GetProperty(targetPropertyName).GetValue(parent.GetComponent<NPC>());
     }
 
