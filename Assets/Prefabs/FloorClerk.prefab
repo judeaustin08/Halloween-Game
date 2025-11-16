@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugLevel: 1
+  deathSound: {fileID: 8300000, guid: 17b80fed22a1bd54fab080d5b3089942, type: 3}
   triggers:
   - trigger: {fileID: 11400000, guid: 6eadac49f013b4a11b9fba070d3fa5e2, type: 2}
     constraints:

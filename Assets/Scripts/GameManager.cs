@@ -1,5 +1,5 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,8 +21,11 @@ public class GameManager : MonoBehaviour
     public string cashierSpawnTag = "caSpawnpoint";
     public AudioSource universalSoundEffect;
     public AudioSource universalMusic;
+    public AudioClip[] music;
+    private int currentMusicIdx = -1;
     public GameObject endUI;
     public Transform player;
+    public GameObject[] shelfItems;
 
     [Header("Game Data")]
 
@@ -71,6 +74,22 @@ public class GameManager : MonoBehaviour
 
         // Spawn cashiers
         cashierSpawner.TrySpawn();
+
+        StartCoroutine(PlayMusic());
+    }
+
+    public IEnumerator PlayMusic()
+    {
+        int idx = Random.Range(0, music.Length - 1);
+        // Don't play the same song twice in a row, unless there is no other option
+        while (music.Length > 1 && idx == currentMusicIdx) idx = Random.Range(0, music.Length - 1);
+
+        universalMusic.PlayOneShot(music[idx]);
+
+        // Wait until song finishes
+        yield return new WaitForSeconds(music[idx].length);
+
+        StartCoroutine(PlayMusic());
     }
 
     void Update()
@@ -102,6 +121,8 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         Time.timeScale = 0;
+        universalMusic.Stop();
+        endUI.GetComponent<EndUI>().UpdateUI();
         endUI.SetActive(true);
     }
 }

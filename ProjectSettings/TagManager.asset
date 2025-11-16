@@ -9,6 +9,7 @@ TagManager:
   - fcSpawnpoint
   - caSpawnpoint
   - Projectile
+  - Shelf
   layers:
   - Default
   - TransparentFX

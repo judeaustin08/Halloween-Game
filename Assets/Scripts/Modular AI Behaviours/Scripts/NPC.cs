@@ -16,6 +16,10 @@ public class NPC : MonoBehaviour
     }
     public DebugLevel debugLevel = DebugLevel.NONE;
 
+    // Class-level declarations
+
+    [SerializeField] private AudioClip deathSound;
+
     [Header("Behaviours")]
 
     [SerializeField] private ConstrainedTrigger[] triggers;
@@ -28,7 +32,7 @@ public class NPC : MonoBehaviour
     private float timer;
     private readonly System.Random rand = new();
 
-    [Header("NPC")]
+    [Header("Movement and Pathfinding")]
 
     private Transform target;
     public Transform _Target
@@ -158,7 +162,7 @@ public class NPC : MonoBehaviour
         float dist;
         eyePos = transform.position + Vector3.up * height;
         targetAtEyeHeight = target.position + Vector3.up * height;
-        
+
         seeingTarget = !Physics.Raycast(
             eyePos,
             targetAtEyeHeight - eyePos,
@@ -295,6 +299,9 @@ public class NPC : MonoBehaviour
     {
         // Disable movement
         speed = 0;
+
+        // Play death sound
+        GameManager.active.universalSoundEffect.PlayOneShot(deathSound);
 
         // Despawn NPC
         Despawn();
