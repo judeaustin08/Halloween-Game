@@ -80,11 +80,12 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator PlayMusic()
     {
-        int idx = Random.Range(0, music.Length - 1);
+        int idx = Random.Range(0, music.Length);
         // Don't play the same song twice in a row, unless there is no other option
-        while (music.Length > 1 && idx == currentMusicIdx) idx = Random.Range(0, music.Length - 1);
+        while (music.Length > 1 && idx == currentMusicIdx) idx = Random.Range(0, music.Length);
 
         universalMusic.PlayOneShot(music[idx]);
+        currentMusicIdx = idx;
 
         // Wait until song finishes
         yield return new WaitForSeconds(music[idx].length);

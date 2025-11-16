@@ -1931,6 +1931,7 @@ MonoBehaviour:
   universalMusic: {fileID: 1412975960}
   music:
   - {fileID: 8300000, guid: 4511df537bf09476abbd81391ee47243, type: 3}
+  - {fileID: 8300000, guid: 63009504187e3456a9b0b5f078ee0995, type: 3}
   endUI: {fileID: 564881818}
   player: {fileID: 1259568083}
   shelfItems:
@@ -2530,7 +2531,7 @@ MonoBehaviour:
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
     cacheStartup: 0
-  showNavGraphs: 1
+  showNavGraphs: 0
   showUnwalkableNodes: 1
   debugMode: 0
   debugFloor: 0

@@ -180,6 +180,12 @@ MonoBehaviour:
     constraints:
     - {fileID: 11400000, guid: 87c6332f2c9be4eed9f80b817f02b898, type: 2}
   movementBehaviours:
+  - behaviour: {fileID: 11400000, guid: 4929d5c9226b549b5a292c49bc529ffa, type: 2}
+    constraints:
+    - {fileID: 11400000, guid: 90607a51da03e4349870c5b51dc45632, type: 2}
+  - behaviour: {fileID: 11400000, guid: 589de114041fb48ffba4dc0e4b7af164, type: 2}
+    constraints:
+    - {fileID: 11400000, guid: 27b05513f6ded4df88c53dbe50f206c9, type: 2}
   - behaviour: {fileID: 11400000, guid: 6e0c9833042f24b06977c334035a01cf, type: 2}
     constraints: []
   health: 100

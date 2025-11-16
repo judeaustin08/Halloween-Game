@@ -339,7 +339,7 @@ public class NPC : MonoBehaviour
     {
         if (debugLevel > DebugLevel.NONE) Log("Sending Command");
         GameObject[] temp;
-        (temp = GameManager.active.floorClerkSpawner.GetAllSpawnedEntities())[Random.Range(0, temp.Length - 1)].GetComponent<NPC>().ReceiveCommand();
+        (temp = GameManager.active.floorClerkSpawner.GetAllSpawnedEntities())[Random.Range(0, temp.Length)].GetComponent<NPC>().ReceiveCommand();
     }
 
     public void Log(string message)

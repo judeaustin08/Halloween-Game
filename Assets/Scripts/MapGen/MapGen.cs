@@ -51,7 +51,7 @@ public class MapGen : MonoBehaviour
         GameObject[] shelfItems = GameManager.active.shelfItems;
         GameObject[] shelves = GameObject.FindGameObjectsWithTag("Shelf");
         foreach (GameObject g in shelves)
-            Instantiate(shelfItems[Random.Range(0, shelfItems.Length - 1)], g.transform.position, g.transform.rotation, g.transform);
+            Instantiate(shelfItems[Random.Range(0, shelfItems.Length)], g.transform.position, g.transform.rotation, g.transform);
 
         StartCoroutine(createAStarGraph());
         return chunks;

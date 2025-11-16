@@ -99,14 +99,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugLevel: 0
+  deathSound: {fileID: 0}
   triggers:
   - trigger: {fileID: 11400000, guid: 8be025111e0a64d5ebb747bdf5981737, type: 2}
     constraints:
     - {fileID: 11400000, guid: 27b05513f6ded4df88c53dbe50f206c9, type: 2}
     - {fileID: 11400000, guid: a28c76ff3f9cd4f1faff7c79536852e1, type: 2}
-  movementBehaviours:
-  - behaviour: {fileID: 11400000, guid: de202cd3c44c042c6abbe3f5aec8df1a, type: 2}
-    constraints: []
+  movementBehaviours: []
   health: 100
   speed: 5
   height: 2
